@@ -3,8 +3,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class StatisticOfFile {
-    private List<Long> allNumbers;
-    private List<Long> sorted;
+    private final List<Long> allNumbers;
+    private final List<Long> sorted;
 
     public StatisticOfFile(String fileName) {
         FileToListConverter converter = new FileToListConverter();
@@ -72,7 +72,6 @@ public class StatisticOfFile {
 
         //check if longest sequence ends with last integer in the list
         if (tempSequence > sequence) {
-            sequence = tempSequence;
             indexStart = tempStart;
             indexEnd = tempEnd;
         }
@@ -117,7 +116,6 @@ public class StatisticOfFile {
 
         //check if longest sequence ends with last integer in the list
         if (tempSequence > sequence) {
-            sequence = tempSequence;
             indexStart = tempStart;
             indexEnd = tempEnd;
         }
@@ -127,5 +125,20 @@ public class StatisticOfFile {
         }
 
         return res;
+    }
+
+    public void printStats() {
+        System.out.println("Max: " + getMax());
+        System.out.println("Min: " + getMin());
+        System.out.printf("Median: %.2f%n", getMedian());
+        System.out.printf("Average: %.2f%n", getAverage());
+        List<Long> longestIncreasingSequence = getLongestIncreasingSequence();
+        System.out.print("Increasing sequence: ");
+        longestIncreasingSequence.forEach(e -> System.out.print(e + "  "));
+        System.out.println();
+        List<Long> longestDecreasingSequence = getLongestDecreasingSequence();
+        System.out.print("Decreasing sequence: ");
+        longestDecreasingSequence.forEach(e -> System.out.print(e + "  "));
+        System.out.println();
     }
 }

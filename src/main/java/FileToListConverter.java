@@ -1,10 +1,9 @@
-import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FileToListConverter {
     public List<Long> getListFromFile(String fileName) {
