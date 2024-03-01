@@ -12,8 +12,7 @@ public class FileToListConverter {
 
         try (InputStream stream = classLoader.getResourceAsStream(fileName);
              InputStreamReader streamReader = new InputStreamReader(stream);
-             BufferedReader reader = new BufferedReader(streamReader))
-        {
+             BufferedReader reader = new BufferedReader(streamReader)) {
             String line;
             while ((line = reader.readLine()) != null) {
                 allNumbers.add(Long.parseLong(line));

@@ -25,7 +25,7 @@ public class StatisticOfFile {
         if (sorted.size() % 2 == 0) {
             long n = sorted.get(sorted.size() / 2);
             long m = sorted.get((sorted.size() / 2) - 1);
-            return  0.5 * (n + m);
+            return 0.5 * (n + m);
         } else {
             return sorted.get(sorted.size() / 2);
         }
@@ -40,91 +40,49 @@ public class StatisticOfFile {
     }
 
     public List<Long> getLongestIncreasingSequence() {
-        int indexStart = 0;
-        int indexEnd = 0;
-        int sequence = 0;
-        int tempSequence = 0;
-        int tempStart = 0;
-        int tempEnd = 0;
-        List<Long> res = new ArrayList<>();
+        List<Long> longest = new ArrayList<>();
+        List<Long> current = new ArrayList<>();
 
-        for (int i = 0; i < allNumbers.size() - 1; i++) {
-
-            long current = allNumbers.get(i);
-            long next = allNumbers.get(i + 1);
-
-            if (current < next && tempSequence == 0) {
-                tempStart = i;
-                tempEnd = i + 1;
-                tempSequence = tempEnd - tempStart;
-            } else if (current < next) {
-                tempEnd = i+1;
-                tempSequence = tempEnd - tempStart;
-            } else if (current > next && tempSequence > sequence) {
-                sequence = tempSequence;
-                indexStart = tempStart;
-                indexEnd = tempEnd;
-                tempSequence = 0;
+        for (long num : allNumbers) {
+            if (current.isEmpty() || num > current.get(current.size() - 1)) {
+                current.add(num);
             } else {
-                tempSequence = 0;
+                if (current.size() > longest.size()) {
+                    longest = new ArrayList<>(current);
+                }
+                current.clear();
+                current.add(num);
             }
         }
 
-        //check if longest sequence ends with last integer in the list
-        if (tempSequence > sequence) {
-            indexStart = tempStart;
-            indexEnd = tempEnd;
+        if (current.size() > longest.size()) {
+            longest = new ArrayList<>(current);
         }
 
-        for (int i = indexStart; i <= indexEnd; i++) {
-            res.add(allNumbers.get(i));
-        }
-
-        return res;
+        return longest;
     }
 
     public List<Long> getLongestDecreasingSequence() {
-        int indexStart = 0;
-        int indexEnd = 0;
-        int sequence = 0;
-        int tempSequence = 0;
-        int tempStart = 0;
-        int tempEnd = 0;
-        List<Long> res = new ArrayList<>();
+        List<Long> longest = new ArrayList<>();
+        List<Long> current = new ArrayList<>();
 
-        for (int i = 0; i < allNumbers.size() - 1; i++) {
-
-            long current = allNumbers.get(i);
-            long next = allNumbers.get(i + 1);
-
-            if (current > next && tempSequence == 0) {
-                tempStart = i;
-                tempEnd = i + 1;
-                tempSequence = tempEnd - tempStart;
-            } else if (current > next) {
-                tempEnd = i+1;
-                tempSequence = tempEnd - tempStart;
-            } else if (current < next && tempSequence > sequence) {
-                sequence = tempSequence;
-                indexStart = tempStart;
-                indexEnd = tempEnd;
-                tempSequence = 0;
+        for (long num : allNumbers) {
+            if (current.isEmpty() || num < current.get(current.size() - 1)) {
+                current.add(num);
             } else {
-                tempSequence = 0;
+                if (current.size() > longest.size()) {
+                    longest = new ArrayList<>(current);
+                }
+                current.clear();
+                current.add(num);
             }
         }
 
-        //check if longest sequence ends with last integer in the list
-        if (tempSequence > sequence) {
-            indexStart = tempStart;
-            indexEnd = tempEnd;
+        if (current.size() > longest.size()) {
+            longest = new ArrayList<>(current);
         }
 
-        for (int i = indexStart; i <= indexEnd; i++) {
-            res.add(allNumbers.get(i));
-        }
-
-        return res;
+        return longest;
     }
 
     public void printStats() {
