@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -5,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 class StatisticOfFileTest {
 
@@ -33,7 +35,7 @@ class StatisticOfFileTest {
 
     @Test
     void getAverage() {
-        assertEquals(45.666666666666664, stats.getAverage());
+        assertEquals(45.666666666666664, stats.getAverage(), 0.000000000000001);
     }
 
     @Test
@@ -45,7 +47,7 @@ class StatisticOfFileTest {
         expectedSequence.add(56L);
         expectedSequence.add(78L);
 
-        assertEquals(expectedSequence, stats.getLongestIncreasingSequence());
+        assertIterableEquals(expectedSequence, stats.getLongestIncreasingSequence());
     }
 
     @Test
@@ -59,6 +61,6 @@ class StatisticOfFileTest {
         expectedSequence.add(2L);
         expectedSequence.add(1L);
 
-        assertEquals(expectedSequence, stats.getLongestDecreasingSequence());
+        assertIterableEquals(expectedSequence, stats.getLongestDecreasingSequence());
     }
 }
