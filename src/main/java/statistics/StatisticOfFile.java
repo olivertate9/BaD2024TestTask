@@ -16,6 +16,7 @@ public class StatisticOfFile {
 
     /**
      * Constructs a StatisticOfFile object from a given file name.
+     *
      * @param fileName the name of the file containing numbers
      * @throws IOException if an error occurs while reading the file
      */
@@ -31,6 +32,7 @@ public class StatisticOfFile {
 
     /**
      * Returns the maximum number in the list.
+     *
      * @return the maximum number in the list.
      */
     public long getMax() {
@@ -39,6 +41,7 @@ public class StatisticOfFile {
 
     /**
      * Returns the minimum number in the list.
+     *
      * @return the minimum number in the list.
      */
     public long getMin() {
@@ -49,6 +52,7 @@ public class StatisticOfFile {
      * Returns the median of the list.
      * The median is the middle value if the list is odd,
      * or the average of the middle two values if the list is even.
+     *
      * @return the median of the list.
      */
     public double getMedian() {
@@ -63,6 +67,7 @@ public class StatisticOfFile {
 
     /**
      * Returns the average of the list.
+     *
      * @return the average of the list
      */
     public double getAverage() {
@@ -78,6 +83,7 @@ public class StatisticOfFile {
      * An increasing sequence is a subsequence of consecutive numbers that are
      * strictly greater than their previous ones. If there are multiple such sequences,
      * returns the first one found.
+     *
      * @return the longest increasing sequence in the list.
      */
     public List<Long> getLongestIncreasingSequence() {
@@ -108,6 +114,7 @@ public class StatisticOfFile {
      * A decreasing sequence is a subsequence of consecutive numbers that are
      * strictly less than their previous ones. If there are multiple such sequences,
      * returns the first one found.
+     *
      * @return the longest decreasing sequence in the list.
      */
     public List<Long> getLongestDecreasingSequence() {
